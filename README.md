@@ -2,42 +2,74 @@
 
 A curated list of **open source** and **free & open source** extensions (add-ons / extensions) for [Blender](https://www.blender.org/).
 
-Blender itself is licensed under the **GPL**, so all add-ons must be GPL-compatible; most community add-ons are GPL, with some under MIT/BSD/Apache. This list focuses on projects with **public source repositories** and avoids "free-to-use but closed-source" add-ons (marked 🆓 only where a notable free version exists).
+Blender itself is licensed under the **GPL**. Add-ons that link against Blender's Python API generally need to follow Blender's licensing requirements; always read the project's own `LICENSE` and third-party notices. This list focuses on projects with **public source repositories** and avoids "free-to-use but closed-source" add-ons (marked 🆓 only where a notable free version exists).
 
-> 💡 Legend: 🔓 = Open Source (source available, libre) · 🆓 = Free (gratis) but source not fully open · ⚠️ = caveats (e.g. paid edition exists).
+> 💡 Legend: 🔌 = Blender extension/add-on · 🧱 = built into Blender · 🧩 = companion application/tool · ☁️ = hosted service · 🔓 = open source · 🆓 = free but not fully open source · ⚠️ = caveat (paid edition, external dependency, archive, or service requirement).
+
+This is a discovery list, not a guarantee of maintenance or compatibility. Check the upstream repository's releases, supported Blender versions, dependencies, and license before adopting a project in production.
 
 ---
 
 ## Table of Contents
 
-- [Modeling & Mesh](#modeling--mesh)
-- [Sculpting](#sculpting)
-- [Retopology](#retopology)
-- [UV & Texturing](#uv--texturing)
-- [Materials & Shaders](#materials--shaders)
-- [Animation & Rigging](#animation--rigging)
-- [Procedural & Geometry Nodes](#procedural--geometry-nodes)
-- [Simulation & Physics](#simulation--physics)
-- [Grease Pencil](#grease-pencil)
-- [Rendering & Engines](#rendering--engines)
-- [AI & Machine Learning](#ai--machine-learning)
-- [Photogrammetry & Scanning](#photogrammetry--scanning)
-- [Import / Export & Interop](#import--export--interop)
-- [Architecture, AEC & BIM](#architecture-aec--bim)
-- [Engineering, Robotics & Technical Science](#engineering-robotics--technical-science)
-- [Medical & Dental](#medical--dental)
-- [Game Engine Integration](#game-engine-integration)
-- [Asset Management](#asset-management)
-- [Camera, Lighting & Compositing](#camera-lighting--compositing)
-- [Workflow & Utilities](#workflow--utilities)
-- [Motion Capture & VFX](#motion-capture--vfx)
-- [Render Farms, Distributed & Compute](#render-farms-distributed--compute)
-- [Launchers & Version Management](#launchers--version-management)
-- [Development & Dev Tools](#development--dev-tools)
-- [Specialized, Research & Domain Tools](#specialized-research--and-domain-tools)
+- [How to use this list](#how-to-use-this-list)
+- [Official sources & add-on collections](#official-sources--add-on-collections)
 - [Before vs After](#before-vs-after)
+- [Core creation](#core-creation)
+  - [Modeling & Mesh](#modeling--mesh)
+  - [Sculpting](#sculpting)
+  - [Retopology](#retopology)
+  - [UV & Texturing](#uv--texturing)
+  - [Materials & Shaders](#materials--shaders)
+  - [Procedural & Geometry Nodes](#procedural--geometry-nodes)
+- [Animation, simulation & VFX](#animation-simulation--vfx)
+  - [Animation & Rigging](#animation--rigging)
+  - [Grease Pencil](#grease-pencil)
+  - [Motion Capture & VFX](#motion-capture--vfx)
+  - [Simulation & Physics](#simulation--physics)
+- [Imaging, rendering & AI](#imaging-rendering--ai)
+  - [Rendering & Engines](#rendering--engines)
+  - [AI & Machine Learning](#ai--machine-learning)
+  - [Photogrammetry & Scanning](#photogrammetry--scanning)
+  - [Camera, Lighting & Compositing](#camera-lighting--compositing)
+- [Interchange & domain workflows](#interchange--domain-workflows)
+  - [Import / Export & Interop](#import--export--interop)
+  - [Architecture, AEC & BIM](#architecture-aec--bim)
+  - [Engineering, Robotics & Technical Science](#engineering-robotics--technical-science)
+  - [Medical & Dental](#medical--dental)
+  - [Game Engine Integration](#game-engine-integration)
+- [Production, infrastructure & development](#production-infrastructure--development)
+  - [Asset Management](#asset-management)
+  - [Workflow & Utilities](#workflow--utilities)
+  - [Render Farms, Distributed & Compute](#render-farms-distributed--compute)
+  - [Launchers & Version Management](#launchers--version-management)
+  - [Development & Dev Tools](#development--dev-tools)
+- [Specialized, Research & Domain Tools](#specialized-research--and-domain-tools)
 - [Complementary Workflows & Stacks](#complementary-workflows--stacks)
+- [Addon Opportunities & Ideas](#addon-opportunities--ideas)
 - [Learning & Community](#learning--community)
+
+---
+
+## How to use this list
+
+The primary organization is by the stage of a Blender workflow where a project is most useful. Some projects appear again as intentional cross-references when they serve more than one stage.
+
+- **Extension/add-on** — installs into Blender and extends its UI, operators, data, or pipeline.
+- **Built-in** — ships with Blender or is part of Blender's native feature set.
+- **Companion** — a separate application or research tool that commonly feeds Blender.
+- **Service** — a hosted render farm, asset library, or other external platform.
+
+The license markers describe the project or add-on code, not necessarily bundled assets, model weights, API usage, or imported content. Compatibility notes are included where a project is archived, version-sensitive, or depends on another application.
+
+## Official sources & add-on collections
+
+These repositories are useful starting points when you want source code, examples, or a broad set of smaller extensions rather than one narrowly focused tool.
+
+- [Blender Add-ons](https://github.com/blender/blender-addons) 🔌🔓⚠️ — Official read-only GitHub mirror of Blender's legacy add-on repository; archived on GitHub, with current development mirrored from Blender's own forge.
+- [Blender Add-ons Contrib](https://github.com/blender/blender-addons-contrib) 🔌🔓⚠️ — Official read-only mirror of community-contributed add-ons and experiments; archived on GitHub, with the upstream source hosted on Blender's forge.
+- [blenderaddons](https://github.com/varkenvarken/blenderaddons) 🔌⚠️ — Public collection of small practical add-ons, with a status file indicating testing and maintenance state; inspect individual licensing before reuse.
+- [BAddons](https://github.com/qwenger/BAddons) 🔌🔓 — GPL-licensed add-on collection with an add-on manager for installing and updating the included tools.
 
 ---
 
@@ -60,7 +92,9 @@ This list is useful because it changes the shape of the work, not just the speed
 
 Short version: the upside is speed, consistency, and domain coverage. The cost is more surface area to maintain, more version compatibility to watch, and more decisions about which tool owns which part of the workflow.
 
-## Modeling & Mesh
+## Core creation
+
+### Modeling & Mesh
 
 - [Sverchok](https://github.com/nortikin/sverchok) 🔓 — Node-based parametric/procedural modeling toolkit (GPL).
 - [TinyCAD](https://github.com/zeffii/Blender_CAD) 🔓 — CAD-style tools (extend, intersect) for meshes.
@@ -68,30 +102,31 @@ Short version: the upside is speed, consistency, and domain coverage. The cost i
 - [Auto Mirror](https://github.com/braingamer/auto-mirror) 🔓 — Fast mirror/modifier workflow.
 - [Fast Carve](https://github.com/jraylab/fast-carve) 🔓 — Boolean carving helper.
 - [ND](https://github.com/hugemenace/nd) 🔓 — Non-destructive modeling toolkit (booleans, bevels, generators).
-- [Bool Tool](https://docs.blender.org/manual/en/latest/addons/object/bool_tools.html) 🔓 — Built-in boolean operations helper.
-- [Extra Objects](https://docs.blender.org/manual/en/latest/addons/add_mesh/extra_objects.html) 🔓 — Built-in collection of extra mesh generators.
-- [LoopTools](https://docs.blender.org/manual/en/latest/addons/mesh/looptools.html) 🔓 — Built-in loop tools (bridge, circle, relax…); also used in retopology and UV work.
+- [Bool Tool](https://docs.blender.org/manual/en/latest/addons/object/bool_tools.html) 🧱🔓 — Built-in boolean operations helper.
+- [Extra Objects](https://docs.blender.org/manual/en/latest/addons/add_mesh/extra_objects.html) 🧱🔓 — Built-in collection of extra mesh generators.
+- [LoopTools](https://docs.blender.org/manual/en/latest/addons/mesh/looptools.html) 🧱🔓 — Built-in loop tools (bridge, circle, relax…); also used in retopology and UV work.
 - [Mifth Tools](https://github.com/mifth/mifthtools) 🔓 — Assorted modeling helpers (edge split, radial clone).
 - [EdgeFlow](https://extensions.blender.org/add-ons/edgeflow/) 🔓 — Adjust mesh geometry to curved surfaces.
 - [Modern Primitive](https://extensions.blender.org/add-ons/modern-primitive/) 🔓 — Non-destructive primitive modeling.
 - [Modifier List](https://extensions.blender.org/add-ons/modifier-list/) 🔓 — Enhanced modifier UI/features.
 - [CAD Transforms](https://github.com/s-leger/blender_cad_transforms) 🔓 — CAD-like precision move, rotate, and scale tools.
 - [CAD Sketcher](https://github.com/hlorus/CAD_Sketcher) 🔓 — CAD-like precision sketching and constraints inside Blender (also used in AEC/Engineering stacks).
+- [Simple Deform Helper](https://github.com/AIGODLIKE/simple_deform_helper) 🔓 — Visualize and interactively control Blender's Simple Deform modifier (GPL-3.0-or-later).
 
-## Sculpting
+### Sculpting
 
 - [Sculpt Pie](https://github.com/xrogueleaderx/BlenderSculptPie) 🔓 — Pie-menu workflow for sculpting.
-- [Sculpt Tools UI](https://github.com/blender/blender/tree/main/release/scripts/addons) 🔓 — Built-in sculpt helpers.
+- [Sculpt Tools UI](https://github.com/blender/blender/tree/main/release/scripts/addons) 🧱🔓 — Built-in sculpt helpers.
 - [BSurfaces GPL](https://github.com/KeithPinson/bsurfaces) 🔓 — Guided quad-remeshing / Grease-Pencil surface (see also Retopology).
 
-## Retopology
+### Retopology
 
 - [RetopoFlow](https://github.com/CGCookie/retopoflow) 🔓 — Streamlined retopology toolset (GPL).
 - [Instant Meshes (bridge)](https://github.com/wjakob/instant-meshes) 🔓 — Interactive field-aligned mesh generator.
 - [AutoRemesher](https://github.com/huxingyi/autoremesher) 🔓 — Auto-retopology to clean all-quad geometry.
 - [BSurfaces GPL](https://github.com/KeithPinson/bsurfaces) 🔓 — Quad-by-grease-pencil retopology (see also Sculpting).
 
-## UV & Texturing
+### UV & Texturing
 
 - [Magic UV](https://github.com/NumesSanguis/Magic-UV) 🔓 — Advanced UV editing (copy/paste, align, world scale).
 - [TexTools](https://github.com/franMarz/TexTools-Blender) 🔓 — UV and texture baking toolkit.
@@ -104,7 +139,7 @@ Short version: the upside is speed, consistency, and domain coverage. The cost i
 - [Sprytile](https://github.com/CCPRO/Sprytile) 🔓 — Tilemap painting workflow for pixel-art textures.
 - [Brushstroke Tools](https://extensions.blender.org/add-ons/brushstroke-tools/) 🔓 — Painting tools by Blender Studio (Geometry Nodes based).
 
-## Materials & Shaders
+### Materials & Shaders
 
 - [Material Nodes](https://github.com/AdrienDelessert/material_nodes) 🔓 — Material layers via nodes.
 - [PBR Node](https://github.com/Andrej730/pbr-node) 🔓 — Quick PBR material setup.
@@ -114,9 +149,11 @@ Short version: the upside is speed, consistency, and domain coverage. The cost i
 - [Substance Textures Importer](https://extensions.blender.org/add-ons/substance-textures-importer/) 🔓 — Import Substance exports into Blender.
 - [img2mat_pro](https://extensions.blender.org/add-ons/img2mat-pro/) 🔓 — Image palettes, PMS matches, and material callouts.
 
-## Animation & Rigging
+## Animation, simulation & VFX
 
-- [Rigify](https://docs.blender.org/manual/en/latest/addons/rigging/rigify.html) 🔓 — Built-in automatic rig generation.
+### Animation & Rigging
+
+- [Rigify](https://docs.blender.org/manual/en/latest/addons/rigging/rigify.html) 🧱🔓 — Built-in automatic rig generation.
 - [Animation Nodes](https://github.com/JacquesLucke/animation_nodes) 🔓 — Node-based animation system.
 - [Easy Weight](https://github.com/BlenderDefender/easy_weight) 🔓 — Weight painting helpers.
 - [Cats Blender Plugin](https://github.com/GiveMeAllYourCats/cats-blender-plugin) 🔓 — Rigging/optimization for VRChat (MIT).
@@ -130,9 +167,9 @@ Short version: the upside is speed, consistency, and domain coverage. The cost i
 - [MPFB](https://github.com/makehumancommunity/mpfb2) 🔓 — MakeHuman Plugin for Blender: parametric human generator with CC0 assets.
 - [MB-Lab](https://github.com/animate1978/MB-Lab) 🔓 — Original Manuel Bastioni Lab generator (unmaintained; see CharMorph/MPFB).
 
-## Procedural & Geometry Nodes
+### Procedural & Geometry Nodes
 
-- [Geometry Nodes (built-in)](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/index.html) 🔓 — Native procedural node system.
+- [Geometry Nodes (built-in)](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/index.html) 🧱🔓 — Native procedural node system.
 - [Sverchok](https://github.com/nortikin/sverchok) 🔓 — See Modeling.
 - [BagaPie](https://extensions.blender.org/add-ons/bagapie/) 🔓 — Large Geometry Nodes modifiers collection (scatter, arrays, architecture).
 - [GeoScatter](https://github.com/Geo-Scatter/geoscatter) 🔓 — Scattering ecosystem (open core).
@@ -149,7 +186,7 @@ Short version: the upside is speed, consistency, and domain coverage. The cost i
 - [Modular Tree](https://github.com/MaximeHerpin/modular_tree) 🔓 — Procedural realistic trees via nodes.
 - [Scifi Generator](https://github.com/Stubblefield-Development/scifi-generator) 🔓 — Procedural sci-fi panel generator.
 
-## Simulation & Physics
+### Simulation & Physics
 
 - [Molecular Script](https://github.com/scorpion81/Blender-Molecular-Script) 🔓 — Particle collision / particle-linking addon.
 - [FLIP Fluids](https://github.com/rlguy/Blender-FLIP-Fluids) 🔓 — Liquid fluid simulation (open source core; paid marketplace build).
@@ -157,20 +194,33 @@ Short version: the upside is speed, consistency, and domain coverage. The cost i
 - [CubeSurfer](https://github.com/pyromuggle/CubeSurfer) 🔓 — Metaball / meshing helper.
 - [PPF Contact Solver](https://github.com/st-tech/ppf-contact-solver) 🔓 (Apache-2.0) — Penetration-free contact solver for shells, solids, rods, rigid bodies, and sand (CUDA GPU or remote; see also Specialized).
 - [Driving Scenario Creator](https://github.com/johschmitz/blender-driving-scenario-creator) 🔓 — Build OpenDRIVE / OpenSCENARIO automotive scenes in Blender.
-- [Blender Physics (built-in)](https://docs.blender.org/manual/en/latest/physics/index.html) 🔓 — Rigid body, cloth, soft body, fluid, smoke.
+- [Blender Physics (built-in)](https://docs.blender.org/manual/en/latest/physics/index.html) 🧱🔓 — Rigid body, cloth, soft body, fluid, smoke.
 - [Phobos](https://github.com/dfki-ric/phobos) 🔓 — Create URDF/SDF/SMURF robot models (see also Engineering).
 
-## Grease Pencil
+### Grease Pencil
 
 - [Grease Pencil Tools](https://github.com/Pullusb/greasepencil-addon) 🔓 — Box decomposition, import/export.
 - [COA Tools](https://github.com/ndee85/coa_tools) 🔓 — See Animation.
 - [StoryPencil](https://extensions.blender.org/add-ons/storypencil-storyboard-tools/) 🔓 — See Animation.
 - [GP Tween](https://extensions.blender.org/add-ons/gp-tween/) 🔓 — Quick Grease Pencil tweening.
 
-## Rendering & Engines
+### Motion Capture & VFX
 
-- [Cycles](https://www.cycles-renderer.org/) 🔓 — Built-in path tracer (GPL).
-- [EEVEE](https://docs.blender.org/manual/en/latest/render/eevee/index.html) 🔓 — Built-in real-time renderer.
+- [BlendArMocap](https://github.com/semagnum/blendarmocap) 🔌🔓 — Webcam mocap via MediaPipe.
+- [Faceit](https://github.com/riedeletc/faceit) 🔌🔓 — Automatic face rigging.
+- [Rokoko Video](https://www.rokoko.com/products/video) 🆓⚠️ — Free webcam/video mocap (not OSS).
+- [Camera Tracking (built-in)](https://docs.blender.org/manual/en/latest/movie_clip/index.html) 🧱🔓 — Native motion tracking.
+- [FreeMoCap Blender Add-on](https://github.com/freemocap/freemocap_blender_addon) 🔌🔓 — AGPL add-on for loading and visualizing FreeMoCap recordings as rigged skeletons and animation data.
+- [PoseCap](https://github.com/CorridorTech/PoseCap) 🔌🔓⚠️ — GPL Blender extension for markerless motion capture, with Apache-2.0 supporting libraries and external pose-estimation model terms.
+- [Open Mocap](https://github.com/Larenju-Rai/open-mocap-blender) 🔌🔓⚠️ — MIT AI mocap add-on for offline body/hand tracking and retargeting; upstream currently documents compatibility with Blender 4.0 and earlier.
+- [Ubisoft Mixer](https://github.com/ubisoft/mixer) 🔌🔓⚠️ — GPL/MIT real-time collaboration add-on; archived and unsupported, so use only for reference or carefully isolated legacy work.
+
+## Imaging, rendering & AI
+
+### Rendering & Engines
+
+- [Cycles](https://www.cycles-renderer.org/) 🧱🔓 — Built-in path tracer (GPL).
+- [EEVEE](https://docs.blender.org/manual/en/latest/render/eevee/index.html) 🧱🔓 — Built-in real-time renderer.
 - [LuxCoreRender](https://github.com/LuxCoreRender/BlendLuxCore) 🔓 — Physically based unbiased renderer (Apache-2).
 - [YafaRay](https://github.com/YafaRay/YafaRay) 🔓 — Open source ray tracer (LGPL).
 - [Appleseed](https://github.com/appleseedhq/blenderseed) 🔓 — Open source GI rendering engine.
@@ -179,7 +229,7 @@ Short version: the upside is speed, consistency, and domain coverage. The cost i
 - [AMD Radeon ProRender](https://github.com/GPUOpen-LibrariesAndSDKs/RadeonProRenderBlenderAddon) 🔓 — Cross-platform GPU renderer (Apache-2).
 - [Blend4Web](https://www.blend4web.com/) 🔓 — Framework for interactive 3D on the web (archived but OSS).
 
-## AI & Machine Learning
+### AI & Machine Learning
 
 - [Dream Textures](https://github.com/carson-katri/dream-textures) 🔓 — Stable Diffusion inside Blender.
 - [AI Render](https://github.com/benrugg/AI-Render) 🔓 — Render with Stable Diffusion / AI.
@@ -189,30 +239,52 @@ Short version: the upside is speed, consistency, and domain coverage. The cost i
 - [BlendNet](https://github.com/state-of-the-art/BlendNet) 🔓 — Distributed rendering / AI on cloud (see also Render Farms).
 - [BlenderMCP](https://github.com/ahujasid/blender-mcp) 🔓 — Control Blender from any LLM via the Model Context Protocol (also under Specialized).
 - [DeepBump](https://github.com/HugoTini/DeepBump) 🔓 — See UV.
+- [ComfyUI-Blender](https://github.com/alexisrolland/ComfyUI-Blender) 🔌🔓⚠️ — Connect Blender to ComfyUI workflows through a GPL add-on and matching custom nodes; requires a ComfyUI server.
+- [BlenderAI](https://github.com/kakajan/blenderAI) 🔌🔓⚠️ — MIT-licensed AI co-pilot with an N-panel, local/cloud providers, skills, and MCP integration; Blender 4.2+.
+- [Tripo 3D for Blender](https://github.com/VAST-AI-Research/tripo-3d-for-blender) 🔌🔓⚠️ — MIT-licensed official extension for Tripo's AI 3D generation service; API/service terms still apply.
+- [Terracotta for Blender](https://github.com/ShamanAndrey/blender-terracotta) 🔌🔓⚠️ — GPL node-graph extension for AI mesh generation and downstream retopology, texturing, rigging, and export; uses third-party APIs.
 
-## Photogrammetry & Scanning
+### Photogrammetry & Scanning
 
 - [Photogrammetry Importer](https://github.com/SBCV/Blender-Addon-Photogrammetry-Importer) 🔓 (MIT) — Import Meshroom/COLMAP/Metashape/OpenMVG results + NeRF.
-- [Meshroom](https://alicevision.org/) 🔓 — Open-source photogrammetry software (standalone, pairs with Blender).
-- [COLMAP](https://colmap.github.io/) 🔓 — Structure-from-motion reconstruction (standalone).
-- [MicMac](https://github.com/micmacIGN/micmac) 🔓 — Open-source photogrammetric suite.
-- [RealityScan](https://www.capturingreality.com/introducing/realityscan) 🆓 — Free 3D scanning app (capture with phone).
+- [Meshroom](https://alicevision.org/) 🧩🔓 — Open-source photogrammetry software (standalone, pairs with Blender).
+- [COLMAP](https://colmap.github.io/) 🧩🔓 — Structure-from-motion reconstruction (standalone).
+- [MicMac](https://github.com/micmacIGN/micmac) 🧩🔓 — Open-source photogrammetric suite.
+- [RealityScan](https://www.capturingreality.com/introducing/realityscan) 🧩🆓⚠️ — Free 3D scanning app (capture with phone; not open source).
+- [Gauss Cannon](https://github.com/warpgatelabs/gauss-cannon) 🔌🔓 — GPL Blender add-on for Gaussian-splat and photogrammetry camera paths, point-cloud export, and reconstruction preparation (Blender 4.2+).
+- [GauSpla](https://github.com/OlstFlow/GauSpla) 🔌🔓⚠️ — GPL Blender add-on for linked Gaussian-splat `.ply` viewing and synchronization with LichtFeld Studio; the sync workflow can overwrite the linked file.
 
-## Import / Export & Interop
+### Camera, Lighting & Compositing
 
-- [glTF 2.0 I/O](https://github.com/KhronosGroup/glTF-Blender-IO) 🔓 — Built-in Khronos glTF importer/exporter.
+- [Gaffer](https://github.com/GregZaal/Gaffer) 🔌🔓 — Lighting and HDRI management.
+- [Photographer](https://github.com/chafouin/photographer) 🔌🔓 — Physical camera & lighting controls.
+- [Sun Position](https://docs.blender.org/manual/en/latest/addons/lighting/sun_position.html) 🧱🔓 — Built-in sun/sky from geolocation & time.
+- [Physical Starlight and Atmosphere](https://github.com/Physical-Starlight-and-Atmosphere/PSA-Blender-Addon) 🔌🔓 — Physically based sky/atmosphere.
+- [Auto Exposure](https://github.com/RedHorn/auto-exposure) 🔌🔓 — Automatic camera exposure.
+- [camera_shakify](https://github.com/EatTheFuture/camera_shakify) 🔌🔓 — Natural camera shake.
+- [Compify](https://github.com/EatTheFuture/compify) 🔌🔓 — Compositing in 3D space for VFX-style node workflows.
+
+## Interchange & domain workflows
+
+### Import / Export & Interop
+
+- [glTF 2.0 I/O](https://github.com/KhronosGroup/glTF-Blender-IO) 🧱🔓 — Built-in Khronos glTF importer/exporter.
 - [Better Collada](https://github.com/godotengine/collada-exporter) 🔓 — Improved Collada export.
 - [Blender Source Tools](https://github.com/ValveSoftware/blender_source_tools) 🔓 — Valve Source engine export.
 - [Niftools](https://github.com/niftools/blender_niftools) 🔓 — Bethesda/Gamebryo .nif import/export.
 - [VRM Addon](https://github.com/saturday06/VRM_Addon_for_Blender) 🔓 — VRM avatar import/export.
 - [MMD Tools](https://github.com/MMD-Blender/blender_mmd_tools) 🔓 — MikuMikuDance import/export.
-- [X3D / Web3D](https://docs.blender.org/manual/en/latest/addons/io_scene_x3d.html) 🔓 — Built-in X3D import/export.
+- [X3D / Web3D](https://docs.blender.org/manual/en/latest/addons/io_scene_x3d.html) 🧱🔓 — Built-in X3D import/export.
 - [fSpy](https://github.com/stuffmatic/fSpy-Blender) 🔓 — Camera matching from still images.
 - [io_scene_psk_psa](https://github.com/DarklightGames/io_scene_psk_psa) 🔓 — Unreal PSK/PSA import/export.
 - [Sollumz](https://github.com/Sollumz/Sollumz) 🔓 — Grand Theft Auto V modding suite.
 - [Mixamo Converter](https://github.com/enziop/mixamo_converter) 🔓 — Convert Mixamo animations for Unreal with root motion.
+- [Universal Multi Importer](https://github.com/Tilapiatsu/blender-Universal_Multi_Importer) 🔌🔓 — GPL batch importer with folder scanning, multi-format import, drag-and-drop, collection creation, and post-import command batching.
+- [Import DAZ](https://github.com/Diffeomorphic/import_daz) 🔌🔓 — GPL importer for native DAZ `.duf` and `.dsf` files, with morph, rig, material, and animation tooling.
+- [Daz To Blender Bridge](https://github.com/daz3d/DazToBlender) 🔌🔓⚠️ — Apache-2.0 bridge between Daz Studio and Blender; requires compatible Daz Studio software and its ecosystem.
+- [Blender IO Datasmith](https://github.com/botero-dev/bl_datasmith) 🔌🔓⚠️ — Blender add-on plus Unreal plugin for importing and exporting Epic Games Datasmith scenes.
 
-## Architecture, AEC & BIM
+### Architecture, AEC & BIM
 
 - [BlenderGIS](https://github.com/domlysz/BlenderGIS) 🔓 — Terrain, OSM, georeferencing from GIS data.
 - [Blender-OSM](https://github.com/domlysz/blender-osm) 🔓 — OpenStreetMap 3D buildings/terrain.
@@ -224,7 +296,7 @@ Short version: the upside is speed, consistency, and domain coverage. The cost i
 - [Archimesh](https://github.com/Antonioya/blender-archimesh) 🔓 — Parametric architecture (rooms, windows, stairs).
 - [CAD Sketcher](https://github.com/hlorus/CAD_Sketcher) 🔓 — See Modeling (precision CAD workflow).
 
-## Engineering, Robotics & Technical Science
+### Engineering, Robotics & Technical Science
 
 - [BlenderCAM](https://github.com/vasmakk/blender-cam) 🔓 — CNC / CAM toolpath generation (GPL).
 - [pcb2blender](https://github.com/Volcomix/pcb2blender) 🔓 — Import PCB designs as 3D models.
@@ -236,13 +308,13 @@ Short version: the upside is speed, consistency, and domain coverage. The cost i
 - [Molecular Nodes](https://github.com/BradyAJohnston/MolecularNodes) 🔓 — See Procedural (molecular data).
 - [Bioxel Nodes](https://extensions.blender.org/add-ons/bioxel-nodes/) 🔓 — See Procedural (volumetric data).
 
-## Medical & Dental
+### Medical & Dental
 
 - [B Dental](https://github.com/DavidGamedev/bdental) 🔓 — Open source dental 3D (CBCT, implants, splints).
 - [MedBlend](https://blender-addons.org/medblend/) 🔓 — Radiation therapy DICOM plan/image/dose visualization.
 - [DICOMator](https://pmc.ncbi.nlm.nih.gov/articles/PMC12738608/) 🔓 — Generate synthetic CT datasets from 3D meshes (OSS add-on).
 
-## Game Engine Integration
+### Game Engine Integration
 
 - [Send to Unreal](https://github.com/EpicGamesExt/BlenderTools) 🔓 — Epic's Blender→Unreal pipeline.
 - [Blender for Unreal Engine](https://github.com/xavierlecas/Blender-For-UnrealEngine-Addons) 🔓 — Export rigs/levels to UE.
@@ -254,28 +326,22 @@ Short version: the upside is speed, consistency, and domain coverage. The cost i
 - [UPBGE](https://github.com/UPBGE/upbge) 🔓 — Open source game engine forked from Blender Game Engine.
 - [Embark Studios Blender Tools](https://github.com/EmbarkStudios/blender-tools) 🔓 — Game-dev workflow tools (import/export, modeling).
 
-## Asset Management
+## Production, infrastructure & development
 
-- [Asset Browser (built-in)](https://docs.blender.org/manual/en/latest/files/asset_libraries/index.html) 🔓 — Native asset library.
+### Asset Management
+
+- [Asset Browser (built-in)](https://docs.blender.org/manual/en/latest/files/asset_libraries/index.html) 🧱🔓 — Native asset library.
 - [BlenderKit](https://github.com/BlenderKit/blenderkit) 🔓 — See Materials (also materials/HDRIs/assets).
 - [Simple Renaming Panel](https://github.com/Weisl/simple_renaming_panel) 🔓 — Batch rename objects/data.
 - [BAM Tool](https://extensions.blender.org/add-ons/bam/) 🆓 — See Materials (material manager).
 - [BlendPack](https://github.com/MeRahulAhire/BlendPack) 🔓 — Package external assets into a portable archive and relink paths.
 - [Pataz Thumbnail Toolz](https://extensions.blender.org/add-ons/pataz-thumbnail-toolz/) 🔓 — Manage asset thumbnails.
+- [Poly Haven Assets](https://github.com/Poly-Haven/polyhavenassets) 🔌🔓⚠️ — GPL add-on for browsing and importing Poly Haven assets in Blender's Asset Browser; the add-on distribution is currently paid while the assets remain free.
+- [Blender Asset Importer](https://github.com/drune9d/blender-asset-importer) 🔌🔓 — MIT batch importer for asset ZIPs and folders with automatic PBR material setup and grid arrangement.
 
-## Camera, Lighting & Compositing
+### Workflow & Utilities
 
-- [Gaffer](https://github.com/GregZaal/Gaffer) 🔓 — Lighting and HDRI management.
-- [Photographer](https://github.com/chafouin/photographer) 🔓 — Physical camera & lighting controls.
-- [Sun Position](https://docs.blender.org/manual/en/latest/addons/lighting/sun_position.html) 🔓 — Built-in sun/sky from geolocation & time.
-- [Physical Starlight and Atmosphere](https://github.com/Physical-Starlight-and-Atmosphere/PSA-Blender-Addon) 🔓 — Physically based sky/atmosphere.
-- [Auto Exposure](https://github.com/RedHorn/auto-exposure) 🔓 — Automatic camera exposure.
-- [camera_shakify](https://github.com/EatTheFuture/camera_shakify) 🔓 — Natural camera shake.
-- [Compify](https://github.com/EatTheFuture/compify) 🔓 — Compositing in 3D space for VFX-style node workflows.
-
-## Workflow & Utilities
-
-- [Node Wrangler](https://docs.blender.org/manual/en/latest/addons/node/node_wrangler.html) 🔓 — Built-in node editing shortcuts.
+- [Node Wrangler](https://docs.blender.org/manual/en/latest/addons/node/node_wrangler.html) 🧱🔓 — Built-in node editing shortcuts.
 - [Node Pie](https://extensions.blender.org/add-ons/node-pie/) 🔓 — Add nodes faster via pie menu.
 - [Hot Node](https://extensions.blender.org/add-ons/hot-node/) 🔓 — Add nodes like typing.
 - [quickmenu](https://github.com/passivestar/quickmenu) 🔓 — Customizable quick-access menu.
@@ -295,25 +361,18 @@ Short version: the upside is speed, consistency, and domain coverage. The cost i
 - [Blend_My_NFTs](https://github.com/torrinwitty/Blend_My_NFTs) 🔓 — Generate NFT collections from Blender.
 - [Brush Manager](https://github.com/CMedinaDev/Brush-Menu) 🔓 — Sculpt/paint brush management.
 
-## Motion Capture & VFX
+### Render Farms, Distributed & Compute
 
-- [BlendArMocap](https://github.com/semagnum/blendarmocap) 🔓 — Webcam mocap via MediaPipe.
-- [Faceit](https://github.com/riedeletc/faceit) 🔓 — Automatic face rigging.
-- [Rokoko Video](https://www.rokoko.com/products/video) 🆓⚠️ — Free webcam/video mocap (not OSS).
-- [Camera Tracking (built-in)](https://docs.blender.org/manual/en/latest/movie_clip/index.html) 🔓 — Native motion tracking.
+- [Sheepit](https://www.sheepit-renderfarm.com/) ☁️🔓 — Free, distributed community render farm.
+- [BlendNet](https://github.com/state-of-the-art/BlendNet) 🧩🔓 — Self-hosted / cloud distributed rendering (see also AI).
+- [3S Cloud Render Farm](https://3sfarm.com/) ☁️🆓⚠️ — Commercial cloud farm with free credits.
 
-## Render Farms, Distributed & Compute
-
-- [Sheepit](https://www.sheepit-renderfarm.com/) 🔓 — Free, distributed community render farm.
-- [BlendNet](https://github.com/state-of-the-art/BlendNet) 🔓 — Self-hosted / cloud distributed rendering (see also AI).
-- [3S Cloud Render Farm](https://3sfarm.com/) 🆓⚠️ — Commercial cloud farm with free credits.
-
-## Launchers & Version Management
+### Launchers & Version Management
 
 - [Blender Launcher V2](https://github.com/DotBow/Blender-Launcher-V2) 🔓 — Manage official builds (standalone client).
 - [Blender Version Manager](https://github.com/DotBow/Blender-Version-Manager) 🔓 — Minimal download manager (standalone).
 
-## Development & Dev Tools
+### Development & Dev Tools
 
 - [fake-bpy-module](https://github.com/nutti/fake-bpy-module) 🔓 — Fake Blender Python API for code completion.
 - [Geometry Script](https://github.com/carson-katri/geometry-script) 🔓 — Scripting API for Geometry Nodes.
@@ -369,19 +428,56 @@ Practical combinations for common pipelines. Pick the pieces you need per stage.
 - **Texturing & baking pipeline** — `Ucupaint` + `Layer Painter` + `TexTools` + `Magic UV` + `DeepBump` + `SimpleBake`. Layered painting, UV prep, derive normal/height from photos, and bake final maps.
 - **Architecture, visualization & BIM** — `BlenderBIM` + `Speckle` + `BlenderGIS` + `Archimesh` + `CAD Sketcher` + `Sun Position` + `Physical Starlight & Atmosphere`. Author OpenBIM, sync AEC data, pull terrain/OSM, draft precisely, and light by location.
 - **Geological & technical surveying** — `BlenderGeoModeller` + `BlenderGIS` + `Blendmsh` + `MeasureIt`. Model drillhole/block volumes, geo-reference context, export FE meshes, and annotate.
-- **Game asset export** — `Send to Unreal` / `Blender for Unreal Engine` + `Mixamo Converter` + `io_scene_psk_psa` + `Simple Renaming Panel` + `3D Print Toolbox`. Model/rig, retarget, export, rename, and validate.
+- **Game asset export** — `Send to Unreal` / `Blender for Unreal Engine` + `Universal Multi Importer` + `Mixamo Converter` + `io_scene_psk_psa` + `Simple Renaming Panel` + `3D Print Toolbox`. Model/rig, batch-import, retarget, export, rename, and validate.
 - **Simulation & VFX** — `FLIP Fluids` / `Molecular Script` + `PPF Contact Solver` + `Geometry Nodes` + `BlendNet` / `Sheepit`. Fluids + particles, cloth/solid contact, procedural enhancement, distributed render.
-- **Motion capture → final animation** — `BlendArMocap` + `Faceit` + `Rigify` + `Easy Weight` + `Camera Tracking`. Body capture, facial rig, apply to a production rig, solve the camera.
+- **Motion capture → final animation** — `BlendArMocap` / `FreeMoCap` / `PoseCap` + `Faceit` + `Rigify` + `Easy Weight` + `Camera Tracking`. Capture body or face motion, retarget to a production rig, and solve the camera.
 - **Live-action VFX integration** — `fSpy` + `Camera Tracking` + `Photographer` + `Physical Starlight & Atmosphere` + `Cycles`. Match a still or tracked shot, recreate camera/lighting, and render a compositable element.
-- **AI-assisted concept & rendering** — `Dream Textures` + `AI Render` + `BlenderNeRF` + `Gaffer` + `Photographer`. Generate concepts/textures, build NeRF scenes, and art-direct lighting.
+- **AI-assisted concept & rendering** — `Dream Textures` / `ComfyUI-Blender` / `BlenderAI` + `AI Render` + `BlenderNeRF` + `Gaffer` + `Photographer`. Generate concepts/textures, orchestrate node workflows, build NeRF scenes, and art-direct lighting.
 - **Scientific & data visualization** — `MolecularNodes` + `Bioxel Nodes` + `Data-FX` / `CSV Importer` + `Geometry Nodes`. Molecules, volumes, and tabular data turned into geometry.
-- **Photogrammetry → clean model** — `Photogrammetry Importer` + `Meshroom` / `COLMAP` + `Instant Meshes` + `RetopoFlow` + `Ucupaint`. Reconstruct scans, retopo, and texture.
+- **Photogrammetry → clean model** — `Photogrammetry Importer` + `Meshroom` / `COLMAP` + `Gauss Cannon` + `Instant Meshes` + `RetopoFlow` + `Ucupaint`. Plan capture, reconstruct scans, retopo, and texture.
 - **Engineering, PCB & technical** — `pcb2blender` + `BlenderCAM` + `MeasureIt` + `CAD Sketcher`. Import PCBs, generate CNC paths, annotate, and precision-draft.
 - **2D / storyboard production** — `StoryPencil` + `Grease Pencil Tools` + `GP Tween` + `COA Tools`. Storyboard, refine, tween, and build cut-out animation.
 - **Physics simulation research** — `PPF Contact Solver` + `Molecular Script` + `Geometry Nodes` + `fake-bpy-module`. Advanced FEM/contact simulation with scripting and reproducible data.
 - **Distributed rendering & dev** — `BlendNet` / `Sheepit` + `Blender Launcher V2` + `fake-bpy-module`. Manage builds, distribute renders, and develop custom add-ons.
-- **Asset packaging & handoff** — `BlendPack` + `Simple Renaming Panel` + `Asset Browser` + `Pataz Thumbnail Toolz`. Normalize names, bundle externals, and keep handoff reproducible.
+- **Asset packaging & handoff** — `BlendPack` + `Blender Asset Importer` + `Simple Renaming Panel` + `Asset Browser` + `Pataz Thumbnail Toolz`. Import, normalize names, bundle externals, and keep handoff reproducible.
 - **Compositing in 3D space** — `Compify` + `Camera Tracking` + `Photographer`. Spatial compositing matched to tracked footage.
+
+## Addon Opportunities & Ideas
+
+The ecosystem is already strong at making things inside Blender. The most promising opportunities are often the connective layers around existing add-ons: validation, compatibility, provenance, migration, caching, and repeatable handoff. The ideas below are deliberately scoped as complement projects rather than replacements.
+
+| Opportunity | Complements | Useful first release |
+| --- | --- | --- |
+| **Extension health checker** | Any installed add-on | Scan Blender version, manifests, dependencies, duplicate keymaps, missing modules, and registration errors; export a human-readable report. |
+| **Pipeline contract validator** | glTF, FBX, Unreal, Godot, VRM, Unity tools | Check units, transforms, naming, modifiers, materials, armatures, LODs, collision meshes, and export settings before handoff. |
+| **Asset provenance and packaging manager** | Asset Browser, BlenderKit, Poly Haven Assets, BlendPack | Create a manifest containing source URLs, licenses, checksums, dependencies, missing paths, and a reproducible portable package. |
+| **Node graph documentation and migration assistant** | Geometry Nodes, Sverchok, Material Nodes, ComfyUI-Blender | Auto-label nodes, generate documentation, detect broken links, compare graph versions, and suggest socket/API migrations. |
+| **Material translation layer** | Ucupaint, Layer Painter, MaterialX, Substance Textures Importer, PBR Node | Remap texture channels and shader parameters between Blender, game engines, MaterialX, and renderer-specific profiles while reporting unsupported features. |
+| **Retopology and UV quality gate** | RetopoFlow, Instant Meshes, Magic UV, TexTools, UVPackmaster | Produce one-click checks for non-manifold geometry, poles, overlaps, texel density, stretching, seams, and bake readiness. |
+| **Non-destructive stack auditor** | ND, Bool Tool, Modifier List, CAD Sketcher | Detect accidental destructive operations, missing modifier dependencies, unapplied scale, cache risks, and expensive or duplicated stack stages. |
+| **Animation retargeting and action librarian** | Rigify, Faceit, FreeMoCap, PoseCap, Cats Blender Plugin | Store rig mappings, rest-pose conversions, naming rules, bake/rollback states, and reusable animation presets in a portable format. |
+| **Simulation cache catalog** | FLIP Fluids, Molecular Script, PPF Contact Solver, BlendNet | Track cache location, solver version, scene hash, frame range, machine, and validity; preview, resume, invalidate, and clean caches safely. |
+| **Shot continuity assistant** | Photographer, Gaffer, Camera Tracking, Cycles, EEVEE | Compare cameras, focal length, exposure, lights, color management, render settings, and asset versions across shots. |
+| **Open render-job coordinator** | BlendNet, Sheepit, Blender Launcher V2 | Submit a portable job manifest to local, self-hosted, or community workers with dependency checks, progress, retries, and result verification. |
+| **Local-first AI provenance layer** | Dream Textures, AI Render, ComfyUI-Blender, BlenderAI, Terracotta | Keep prompts, seeds, model identifiers, generated assets, licenses, API usage, and cache files together without exposing credentials. |
+| **Point-cloud and Gaussian-splat interchange bridge** | Photogrammetry Importer, BlenderNeRF, Gauss Cannon, GauSpla | Normalize coordinate systems, preserve camera metadata, manage PLY attributes, create LODs, and round-trip edits without losing provenance. |
+| **Scientific scene reproducibility pack** | Molecular Nodes, Bioxel Nodes, Data-FX, CSV Importer | Record source datasets, units, transforms, color maps, parameters, software versions, citations, and a script that rebuilds the scene. |
+| **Accessibility and workspace profiles** | Node Pie, quickmenu, Screencast Keys, Blender keymaps | Ship portable profiles for keyboard layouts, tablets, high-contrast UI, reduced motion, contextual shortcuts, and teaching environments. |
+| **Extension developer test kit** | fake-bpy-module, Node To Python, Advanced Blender Add-on | Generate manifests, package zips, run headless smoke tests, test registration/unregistration, and report compatibility across Blender versions. |
+
+### High-value design principles
+
+- **Integrate before replacing.** Read the data and APIs of established add-ons, then provide a bridge, validator, or handoff layer.
+- **Prefer safe inspection first.** Make destructive operations opt-in, previewable, undoable, and logged.
+- **Keep metadata portable.** Store manifests and mappings in readable JSON or another documented format instead of hiding them in a proprietary database.
+- **Design for version drift.** Detect Blender and add-on versions, degrade gracefully, and explain exactly which feature is unavailable.
+- **Work offline when possible.** Network access should be optional; API keys, prompts, and local asset paths should not leave the user's machine by default.
+- **Make automation observable.** Add progress, dry-run mode, logs, error summaries, and a way to reproduce a failed operation.
+- **Test the handoff.** A promising add-on should prove that its result can be reopened, exported, rendered, or rebuilt by another user.
+
+### Good first MVPs
+
+If you want to start a new repository, the most approachable first projects are a **pipeline contract validator**, **asset provenance manager**, **node graph documentation tool**, or **extension health checker**. They can begin as read-only Blender panels, have clear measurable outputs, and complement many existing projects without competing with their core functionality.
 
 ## Learning & Community
 
@@ -402,8 +498,12 @@ Practical combinations for common pipelines. Pick the pieces you need per stage.
 Found an awesome OSS/FOSS Blender extension missing? Open a pull request! Please ensure:
 
 1. The project is **open source** (link to a public source repository) — or clearly marked 🆓 if free-only.
-2. It is compatible with a recent Blender release.
-3. It fits one of the categories above (or propose a new one), with no existing duplicate entry.
+2. The entry identifies whether it is an add-on, built-in feature, companion tool, or service.
+3. Include the license, supported Blender version, and important external dependencies when known.
+4. Prefer the canonical upstream repository and link to releases or installation documentation when available.
+5. It fits one of the categories above (or propose a new one), with no existing duplicate entry.
+
+When a project is archived, unmaintained, version-locked, or dependent on a paid service, keep it if it remains useful but add `⚠️` and explain the limitation in the description.
 
 ## License
 
